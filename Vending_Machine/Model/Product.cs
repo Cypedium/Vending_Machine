@@ -19,7 +19,7 @@ namespace Vending_Machine.Model
             {
                 return ProductId;
             }
-            private set
+            protected set
             {
                 productId = value;
             }
@@ -115,9 +115,19 @@ namespace Vending_Machine.Model
             }
         }
 
+        public virtual string ShowProductInfo()
+        {
+           return ($"{productName}, {Price.ToString()}, {Cal.ToString()}");
+        }
+
+        //public virtual string Consume()
+        //{
+        //    return 0;
+        //}
+
         public Product (string productName, string cal, string price) //Constructor
         {
-            ProductId = ProductSequencer.NextProductId(); //Uses PersonSequencer to get next id. 
+            ProductId = ProductSequencer.NextProductId(); //Uses ProductSequencer to get next id. 
             ProductName = productName;
             Price = int.Parse(price);
             Cal = int.Parse(cal);
