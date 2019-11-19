@@ -17,6 +17,6 @@ namespace Vending_Machine.Data
             {
                 productId = 0;
             }
-        }
+        
     }
 }

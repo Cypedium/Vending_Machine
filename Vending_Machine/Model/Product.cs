@@ -7,10 +7,12 @@ namespace Vending_Machine.Model
 {
     public class Product
     {
-        private string productName;
-        private int price;
-        private int cal;
-        private int productId;
+        protected string productName;
+        protected string price;
+        protected string cal;
+        protected int cal_int;
+        protected int price_int;
+        protected int productId;
         public int ProductId
         {
             get
@@ -32,7 +34,7 @@ namespace Vending_Machine.Model
             set
             {
                 bool checkLetter = true; //The string needs a value, and have a textlength of 1-29 chars. 
-                if (value.Length > 0 && value.Length < 30 && value != null)
+                if ((value.Length > 0 && value.Length < 30) && value != null)
                 {
                     foreach (var item in value)
                     {
@@ -47,12 +49,12 @@ namespace Vending_Machine.Model
                     }
                     else
                     {
-                        throw new ArgumentException("Name can only contain letters.");
+                        throw new ArgumentException("Productname can only contain letters.");
                     }
                 }
                 else
                 {
-                    throw new ArgumentException("Name is too long or short.");
+                    throw new ArgumentException("Productname is too long or short.");
                 }
             }
         }
@@ -61,25 +63,26 @@ namespace Vending_Machine.Model
         {
             get
             {
-                return cal;
+                return cal_int;
             }
 
             set
             {
                 //The int needs a value, no char, and have a textlength of 1-3 numbers.
-                if (value > 1 && value < 4 && value != 0)
-                {
-                    cal = value;
+                
+                if (value > 0 && value < 1000)
+                {                  
+                    cal_int = value;
                 }
 
                 else if (value == 0)
                 {
-                    throw new ArgumentException("The value can not be 0 och characters");
+                    throw new ArgumentException("The value can not be 0.");
                 }
 
                 else
                 {
-                    throw new ArgumentException("Cal need to be two or three numbers");
+                    throw new ArgumentException("The Calories needs to be between 1 and 999.");
                 }
             }                             
         }
@@ -88,35 +91,36 @@ namespace Vending_Machine.Model
         {
             get
             {
-                return price;
+                return price_int;
             }
 
             set
             {
                 //The int needs a value, no char, and have a textlength of 1-3 numbers.
-                if (value > 1 && value < 4 && value != 0)
+                
+                if (value > 0 && value < 300)
                 {
-                    price = value;
+                    price_int = value;
                 }
 
-                else if (value == 0)
+                else if (value ==0 )
                 {
-                    throw new ArgumentException("The value can not be 0 och characters");
+                    throw new ArgumentException("The value can not be 0.");
                 }
 
                 else
                 {
-                    throw new ArgumentException("Cal need to be two or three numbers");
+                    throw new ArgumentException("The price needs to be under 299.");
                 }
             }
         }
 
-        public Product (string productName, int cal, int price) //Constructor
+        public Product (string productName, string cal, string price) //Constructor
         {
             ProductId = ProductSequencer.NextProductId(); //Uses PersonSequencer to get next id. 
             ProductName = productName;
-            Price = price;
-            Cal = cal;
+            Price = int.Parse(price);
+            Cal = int.Parse(cal);
         }
     }
 }
