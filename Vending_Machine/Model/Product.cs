@@ -123,6 +123,10 @@ namespace Vending_Machine.Model
         public virtual string ShowProductInfo()
         {
            return ($"{productName}, {price_int.ToString()}, {cal_int.ToString()}");
-        }  
+        }
+        public virtual string Clear(string stringtoclear)
+        {
+            return "";
+        }
     }
 }

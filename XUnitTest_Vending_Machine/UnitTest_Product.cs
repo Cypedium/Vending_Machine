@@ -31,19 +31,31 @@ namespace XUnitTest_Vending_Machine
         {
             //Arrange
             string testcoke = "Coke, 20, 345, False";
-            string testproteinbar = "Proteinbar, 45, 299";
-            string testRC_Car = "Best Remote Control Car Ever, 999, 0";
+            string testproteinbar = "Proteinbar, 45, 299, True";
+            string testRC_Car = "Best Remote Control Car Ever, 999, 0, True";
             //Assert
             
-            Coke aCoke = new Coke(1);
-            Proteinbar abar = new Proteinbar(2);
-            RC_Car aCar = new RC_Car(3);
+            Coke aCoke = new Coke(ProductSequencer.NextProductId());
+            Proteinbar abar = new Proteinbar(ProductSequencer.NextProductId());
+            RC_Car aCar = new RC_Car(ProductSequencer.NextProductId());
 
 
             //Act
             Assert.Equal(testcoke,aCoke.ShowProductInfo());
             Assert.Equal(testproteinbar,abar.ShowProductInfo());
             Assert.Equal(testRC_Car,aCar.ShowProductInfo());
+        }
+        [Fact]
+        public void ClearInfo_ok()
+        {
+            //Assigne
+            string testempty = "";
+
+            //Assert
+            Coke aCoke_ = new Coke(ProductSequencer.NextProductId());
+
+            //Act
+            Assert.Equal(testempty, aCoke_.Clear(aCoke_.ShowProductInfo()));
         }
     }
 }

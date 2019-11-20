@@ -13,5 +13,10 @@ namespace Vending_Machine.Model
         {
             chocholate = false;
         }
+        public override string ShowProductInfo()
+        {
+            return ($"{productName}, {price_int.ToString()}, {cal_int.ToString()}, {chocholate}");
+        }
     }
+
 }
