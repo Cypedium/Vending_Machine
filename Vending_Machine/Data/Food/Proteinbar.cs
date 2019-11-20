@@ -12,8 +12,8 @@ namespace Vending_Machine.Data
             base.ProductId = ProductSequencer.NextProductId();
             base.chocholate = true;
             base.ProductName = "Proteinbar";
-            base.price_int = 45;
-            base.cal_int = 299;
+            base.Price = 45;
+            base.Cal = 299;
         }
     }
 }

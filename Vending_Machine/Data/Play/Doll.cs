@@ -12,8 +12,8 @@ namespace Vending_Machine.Data
             base.ProductId = ProductSequencer.NextProductId();
             base.battery = false;
             base.ProductName = "Doll";
-            base.price_int = 449;
-            base.cal_int = -1;
+            base.Price = 449;
+            base.Cal = 0;
         }
     }
 }

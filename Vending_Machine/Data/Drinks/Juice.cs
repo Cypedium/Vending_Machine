@@ -12,8 +12,8 @@ namespace Vending_Machine.Data
             base.ProductId = ProductSequencer.NextProductId();
             base.carbonate = true;
             base.ProductName = "Juice";
-            base.price_int = 20;
-            base.cal_int = 345;
+            base.Price = 20;
+            base.Cal = 345;
         }
     }
 }

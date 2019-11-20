@@ -12,8 +12,8 @@ namespace Vending_Machine.Data
             base.ProductId = ProductSequencer.NextProductId();
             base.chocholate = false;
             base.ProductName = "Sandwich";
-            base.price_int = 99;
-            base.cal_int = 345;
+            base.Price = 99;
+            base.Cal = 345;
         }
 
     }

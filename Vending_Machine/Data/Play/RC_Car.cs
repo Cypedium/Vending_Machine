@@ -12,8 +12,8 @@ namespace Vending_Machine.Data
             base.ProductId = ProductSequencer.NextProductId();
             base.battery = true;
             base.ProductName = "RC_Car";
-            base.price_int = 999;
-            base.cal_int = -1;
+            base.Price = 999;
+            base.Cal = 0;
         }
     }
 }
