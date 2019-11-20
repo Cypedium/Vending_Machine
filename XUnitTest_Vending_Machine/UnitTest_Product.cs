@@ -11,7 +11,7 @@ namespace XUnitTest_Vending_Machine
     {
         [Fact]
 
-        public void AddnewProduct()
+        public void CreateProduct_ok()
         {
             //Arrange
             int testid1 = 1;
@@ -26,6 +26,24 @@ namespace XUnitTest_Vending_Machine
             Assert.Equal(testid2, proteinbar.ProductId);
             Assert.Equal(testid3, doll.ProductId);
         }
+        [Fact]
+        public void ShowProductInfo_ok()
+        {
+            //Arrange
+            string testcoke = "Coke, 20, 345, False";
+            string testproteinbar = "Proteinbar, 45, 299";
+            string testRC_Car = "Best Remote Control Car Ever, 999, 0";
+            //Assert
+            
+            Coke aCoke = new Coke(1);
+            Proteinbar abar = new Proteinbar(2);
+            RC_Car aCar = new RC_Car(3);
 
+
+            //Act
+            Assert.Equal(testcoke,aCoke.ShowProductInfo());
+            Assert.Equal(testproteinbar,abar.ShowProductInfo());
+            Assert.Equal(testRC_Car,aCar.ShowProductInfo());
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace Vending_Machine.Data
         {
             base.ProductId = ProductSequencer.NextProductId();
             base.battery = true;
-            base.ProductName = "RC_Car";
+            base.ProductName = "Best Remote Control Car Ever";
             base.Price = 999;
             base.Cal = 0;
         }
