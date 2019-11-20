@@ -1,107 +1,31 @@
-using System;
-using Vending_Machine.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using Xunit;
+using Vending_Machine.Model;
+using Vending_Machine.Data;
 
 namespace XUnitTest_Vending_Machine
 {
     public class UnitTest_Product
     {
         [Fact]
-        public void CreateProduct_ok()
+
+        public void AddnewProduct()
         {
             //Arrange
-            string productName = "testproductname";
-            string price = "5";
-            int price_int = 5;
-            string cal = "234";
-            int cal_int = 234;
-
-            //Act
-            Product testProduct = new Product(productName, cal, price);
-
+            int testid1 = 1;
+            int testid2 = 2;
+            int testid3 = 3;
             //Assert
-            Assert.Equal(productName, testProduct.ProductName);
-            Assert.Equal(cal_int, testProduct.Cal);
-            Assert.Equal(price_int, testProduct.Price);
-
-        }
-    
-        [Fact]
-        public void CreateWrongProductname()
-        {
-            //Arrange
-            string productName = "Bar33";
-            string cal = "34";
-            string price = "450";
-
-            string excepted_error_msg = "Productname can only contain letters.";
-           string error_msg="";
+            Coke cocacola = new Coke(testid1);
+            Proteinbar proteinbar = new Proteinbar(testid2);
+            Doll doll = new Doll(testid3);
             //Act
-            try
-            {
-                Product testProduct = new Product(productName, cal, price);
-            }
-
-            catch (ArgumentException exception)
-            {
-             error_msg = exception.Message;
-            }
-
-            //Assert
-            Assert.Equal(excepted_error_msg, error_msg);
-
+            Assert.Equal(testid1, cocacola.ProductId);
+            Assert.Equal(testid2, proteinbar.ProductId);
+            Assert.Equal(testid3, doll.ProductId);
         }
 
-        [Fact]
-        public void CreateWrongPrice()
-        {
-            //Arrange
-            string productName = "testname";
-            string price = "0";      
-            string cal = "23";
-
-            string excepted_error_msg = "The value can not be 0.";
-            string error_msg = "";
-            //Act
-            try
-            {
-                Product testProduct = new Product(productName, cal, price);
-            }
-
-            catch (ArgumentException exception)
-            {
-                error_msg = exception.Message;
-            }
-
-            //Assert
-            Assert.Equal(excepted_error_msg, error_msg);
-
-        }
-
-        [Fact]
-        public void CreateWrongCal()
-        {
-            //Arrange
-            string productName = "testname";
-            string price = "50";
-            string cal = "1500";
-
-            string excepted_error_msg = "The Calories needs to be between 1 and 999.";
-            string error_msg = "";
-            //Act
-            try
-            {
-                Product testProduct = new Product(productName, cal, price);
-            }
-
-            catch (ArgumentException exception)
-            {
-                error_msg = exception.Message;
-            }
-
-            //Assert
-            Assert.Equal(excepted_error_msg, error_msg);
-
-        }
     }
 }

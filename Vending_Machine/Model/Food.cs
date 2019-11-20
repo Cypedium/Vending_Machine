@@ -7,15 +7,11 @@ namespace Vending_Machine.Model
 {
     public class Food : Product
     {
-        public bool chocholate=false;
+        protected bool chocholate;
 
-        public override Food(bool chocholate, string productName, string cal, string price) : base (productName, cal, price)
+        public  Food () : base ()
         {
-            base.ProductId = ProductSequencer.NextProductId(); //Uses ProductSequencer to get next id. 
-            base.ProductName = productName;
-            base.Price = int.Parse(price);
-            base.Cal = int.Parse(cal);
-
+            chocholate = false;
         }
     }
 }

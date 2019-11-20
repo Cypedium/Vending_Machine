@@ -4,8 +4,12 @@ using System.Text;
 
 namespace Vending_Machine.Model
 {
-    class Drinks
+    public class Drinks : Product
     {
-        bool carbonate;
+        protected bool carbonate;
+        public Drinks() : base()
+        {
+            carbonate = false;
+        }
     }
 }

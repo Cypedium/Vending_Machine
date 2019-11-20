@@ -13,6 +13,17 @@ namespace Vending_Machine.Model
         protected int cal_int;
         protected int price_int;
         protected int productId;
+
+        public Product() //Constructor
+        {
+            ProductId = 0; 
+            ProductName = "";
+            Price = 0;
+            Cal = 0;
+        }
+
+       
+
         public int ProductId
         {
             get
@@ -33,29 +44,30 @@ namespace Vending_Machine.Model
 
             set
             {
-                bool checkLetter = true; //The string needs a value, and have a textlength of 1-29 chars. 
-                if ((value.Length > 0 && value.Length < 30) && value != null)
-                {
-                    foreach (var item in value)
-                    {
-                        if (!char.IsLetter(item))
-                        {
-                            checkLetter = false;
-                        }
-                    }
-                    if (checkLetter)
-                    {
-                        productName = value;
-                    }
-                    else
-                    {
-                        throw new ArgumentException("Productname can only contain letters.");
-                    }
-                }
-                else
-                {
-                    throw new ArgumentException("Productname is too long or short.");
-                }
+                //bool checkLetter = true; //The string needs a value, and have a textlength of 1-29 chars. 
+                //if ((value.Length > 0 && value.Length < 30) && value != null)
+                //{
+                //    foreach (var item in value)
+                //    {
+                //        if (!char.IsLetter(item))
+                //        {
+                //            checkLetter = false;
+                //        }
+                //    }
+                //    if (checkLetter)
+                //    {
+                //        productName = value;
+                //    }
+                //    else
+                //    {
+                //        throw new ArgumentException("Productname can only contain letters.");
+                //    }
+                //}
+                //else
+                //{
+                //    throw new ArgumentException("Productname is too long or short.");
+                //}
+                
             }
         }
 
@@ -69,21 +81,27 @@ namespace Vending_Machine.Model
             set
             {
                 //The int needs a value, no char, and have a textlength of 1-3 numbers.
-                
-                if (value > 0 && value < 1000)
-                {                  
-                    cal_int = value;
-                }
 
-                else if (value == 0)
-                {
-                    throw new ArgumentException("The value can not be 0.");
-                }
+                //if (value > 0 && value < 1000)
+                //{                  
+                //    cal_int = value;
+                //}
 
-                else
-                {
-                    throw new ArgumentException("The Calories needs to be between 1 and 999.");
-                }
+                //else if (value == 0)
+                //{
+                //    throw new ArgumentException("The value can not be 0.");
+                //}
+
+                //else if (value==-1)
+                //{
+                //    cal_int = 0;
+                //}
+
+                //else
+                //{
+                //    throw new ArgumentException("The Calories needs to be between 1 and 999.");
+                //}
+               
             }                             
         }
 
@@ -97,40 +115,28 @@ namespace Vending_Machine.Model
             set
             {
                 //The int needs a value, no char, and have a textlength of 1-3 numbers.
+
+                //if (value > 0 && value < 300)
+                //{
+                //    price_int = value;
+                //}
+
+                //else if (value ==0 )
+                //{
+                //    throw new ArgumentException("The value can not be 0.");
+                //}
+
+                //else
+                //{
+                //    throw new ArgumentException("The price needs to be under 299.");
+                //}
                 
-                if (value > 0 && value < 300)
-                {
-                    price_int = value;
-                }
-
-                else if (value ==0 )
-                {
-                    throw new ArgumentException("The value can not be 0.");
-                }
-
-                else
-                {
-                    throw new ArgumentException("The price needs to be under 299.");
-                }
             }
         }
 
         public virtual string ShowProductInfo()
         {
            return ($"{productName}, {Price.ToString()}, {Cal.ToString()}");
-        }
-
-        //public virtual string Consume()
-        //{
-        //    return 0;
-        //}
-
-        public Product (string productName, string cal, string price) //Constructor
-        {
-            ProductId = ProductSequencer.NextProductId(); //Uses ProductSequencer to get next id. 
-            ProductName = productName;
-            Price = int.Parse(price);
-            Cal = int.Parse(cal);
-        }
+        }  
     }
 }
