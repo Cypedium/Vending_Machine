@@ -22,9 +22,9 @@ namespace XUnitTest_Vending_Machine
             Proteinbar proteinbar = new Proteinbar(testid2);
             Doll doll = new Doll(testid3);
             //Act
-            Assert.Equal(testid1, cocacola.ProductId);
-            Assert.Equal(testid2, proteinbar.ProductId);
-            Assert.Equal(testid3, doll.ProductId);
+            Assert.Equal(testid1, cocacola.ProductNumber);
+            Assert.Equal(testid2, proteinbar.ProductNumber);
+            Assert.Equal(testid3, doll.ProductNumber);
         }
         [Fact]
         public void ShowProductInfo_ok()
@@ -35,9 +35,9 @@ namespace XUnitTest_Vending_Machine
             string testRC_Car = "Best Remote Control Car Ever, 999, 0, True";
             //Assert
             
-            Coke aCoke = new Coke(ProductSequencer.NextProductId());
-            Proteinbar abar = new Proteinbar(ProductSequencer.NextProductId());
-            RC_Car aCar = new RC_Car(ProductSequencer.NextProductId());
+            Coke aCoke = new Coke(ProductSequencer.NextProductNumber());
+            Proteinbar abar = new Proteinbar(ProductSequencer.NextProductNumber());
+            RC_Car aCar = new RC_Car(ProductSequencer.NextProductNumber());
 
 
             //Act
@@ -52,7 +52,7 @@ namespace XUnitTest_Vending_Machine
             string testempty = "";
 
             //Assert
-            Coke aCoke_ = new Coke(ProductSequencer.NextProductId());
+            Coke aCoke_ = new Coke(ProductSequencer.NextProductNumber());
 
             //Act
             Assert.Equal(testempty, aCoke_.Clear(aCoke_.ShowProductInfo()));

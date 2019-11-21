@@ -14,7 +14,7 @@ namespace Vending_Machine.Model
 
         public override string ShowProductInfo()
         {
-            return ($"{productName}, {price_int.ToString()}, {cal_int.ToString()}, {carbonate}");
+            return ($"{base.ShowProductInfo()}, {carbonate}");
         }
     }
 }

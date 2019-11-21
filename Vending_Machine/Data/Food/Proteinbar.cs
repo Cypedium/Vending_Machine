@@ -7,9 +7,9 @@ namespace Vending_Machine.Data
 {
     public class Proteinbar : Food
     {
-        public Proteinbar(int ProductId) : base()
+        public Proteinbar(int ProductNumber) : base()
         {
-            base.ProductId = ProductSequencer.NextProductId();
+            base.ProductNumber = ProductSequencer.NextProductNumber();
             base.chocholate = true;
             base.ProductName = "Proteinbar";
             base.Price = 45;

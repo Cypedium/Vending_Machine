@@ -7,15 +7,15 @@ namespace Vending_Machine.Data
     public class ProductSequencer
     {
         
-            protected static int productId = 0;
-            public static int NextProductId()
+            protected static int productNumber = 0;
+            public static int NextProductNumber()
             {
-                return (++productId);
+                return (++productNumber);
             }
 
             public static void Reset()
             {
-                productId = 0;
+                productNumber = 0;
             }
         
     }

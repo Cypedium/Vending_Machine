@@ -7,9 +7,9 @@ namespace Vending_Machine.Data
 {
     public class Coke : Drinks
     {
-        public Coke(int ProductId) : base()
+        public Coke(int ProductNumber) : base()
         {
-            base.ProductId = ProductSequencer.NextProductId();
+            base.ProductNumber = ProductSequencer.NextProductNumber();
             base.carbonate = false;
             base.ProductName = "Coke";
             base.Price = 20;

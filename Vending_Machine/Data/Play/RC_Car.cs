@@ -7,9 +7,9 @@ namespace Vending_Machine.Data
 {
     public class RC_Car : Toys
     {
-        public RC_Car(int ProductID) : base()
+        public RC_Car(int ProductNumber) : base()
         {
-            base.ProductId = ProductSequencer.NextProductId();
+            base.ProductNumber = ProductSequencer.NextProductNumber();
             base.battery = true;
             base.ProductName = "Best Remote Control Car Ever";
             base.Price = 999;

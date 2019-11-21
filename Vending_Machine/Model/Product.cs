@@ -17,7 +17,7 @@ namespace Vending_Machine.Model
 
         public Product() //Constructor
         {
-            ProductId = 0; 
+            ProductNumber = 0; 
             ProductName = "No input";
             Price=0;
             Cal=0;
@@ -25,7 +25,7 @@ namespace Vending_Machine.Model
 
 
 
-        public int ProductId
+        public int ProductNumber
         {
             get
             {
