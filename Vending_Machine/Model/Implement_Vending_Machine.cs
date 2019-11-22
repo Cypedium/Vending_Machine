@@ -9,7 +9,7 @@ namespace Vending_Machine.Model
     public class Implement_Vending_Machine : IVending_Machine
     {
         private int NewAmount { get; set; }
-        private readonly int amount=0;
+        private int amount=0;
         //Create all products
         readonly Product[] productArray = new Product[]
         {
