@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Vending_Machine.Model
 {
-    public interface I_Vending_Machine
+    public interface IVending_Machine
     {
         // defualt acess level is pulic and "static"
         void AddCurrency(int amount);
         Product Request(int ProductNumber);
 
-        int EndSession();
+        int[] EndSession();
 
         string GetDescription(int ProductNumber);
 

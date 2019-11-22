@@ -128,5 +128,10 @@ namespace Vending_Machine.Model
         {
             return "";
         }
+
+        public override string ToString() //kan vara virtual också
+        {
+            return $"{productId}: {productName}";
+        }
     }
 }
