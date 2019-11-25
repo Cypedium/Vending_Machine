@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using System.Text;
 using Vending_Machine.Data;
+using System.Linq;
 
 namespace Vending_Machine.Model
 {
 
     public class Implement_Vending_Machine : IVending_Machine
     {
+        
         private int NewAmount { get; set; }
         private int amount=0;
         //Create all products
+
         readonly Product[] productArray = new Product[]
         {
         new Coke(ProductSequencer.NextProductNumber()),
@@ -21,19 +24,23 @@ namespace Vending_Machine.Model
         new RC_Car(ProductSequencer.NextProductNumber())
         };
         
-        public void AddCurrency(int amount)
+        public void AddCurrency(int newamount)
         {
+            
             int[] newAmountArray = new int[] { 1000,500,100,50,20,10,5,1};
+            
 
             for (int i = 0; i < 8; i++)
                 {
-                    if (NewAmount==newAmountArray[i])
+                    if (newamount==newAmountArray[i])
                     {
-                        amount += NewAmount;
+                    amount += newAmountArray[i];
+                    UpdateMoneypool();
+                    break;
                     }
                     else
                     {
-                        throw new Exception("Wrong input amount.");
+                        throw new FormatException("Wrong input amount.");
                     }
                 }        
         }
@@ -57,9 +64,29 @@ namespace Vending_Machine.Model
             throw new Exception("The money array is empty.");
         }
 
+        public int[] UpdateMoneypool()
+        {
+            int[] moneyArray = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
+            int[] depocitArray = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+
+            while (amount != 0)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    if (amount >= moneyArray[i])
+                    {
+                        depocitArray[i] = depocitArray[i] + moneyArray[i];
+                        return depocitArray;
+                    }
+                }
+            }
+            throw new Exception("The money array is empty.");
+        }
+
         public int GetBalance()
         {
-        return amount;  
+            
+        return UpdateMoneypool().Sum();
         }
 
         public string GetDescription(int ProductNumber)

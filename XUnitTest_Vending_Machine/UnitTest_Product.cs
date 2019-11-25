@@ -34,16 +34,16 @@ namespace XUnitTest_Vending_Machine
             string testproteinbar = "Proteinbar, 45, 299, True";
             string testRC_Car = "Best Remote Control Car Ever, 999, 0, True";
             //Assert
-            
+
             Coke aCoke = new Coke(ProductSequencer.NextProductNumber());
             Proteinbar abar = new Proteinbar(ProductSequencer.NextProductNumber());
             RC_Car aCar = new RC_Car(ProductSequencer.NextProductNumber());
 
 
             //Act
-            Assert.Equal(testcoke,aCoke.ShowProductInfo());
-            Assert.Equal(testproteinbar,abar.ShowProductInfo());
-            Assert.Equal(testRC_Car,aCar.ShowProductInfo());
+            Assert.Equal(testcoke, aCoke.ShowProductInfo());
+            Assert.Equal(testproteinbar, abar.ShowProductInfo());
+            Assert.Equal(testRC_Car, aCar.ShowProductInfo());
         }
         [Fact]
         public void ClearInfo_ok()
