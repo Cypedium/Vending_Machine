@@ -28,65 +28,56 @@ namespace Vending_Machine.Model
         {
             
             int[] newAmountArray = new int[] { 1000,500,100,50,20,10,5,1};
-            
 
-            for (int i = 0; i < 8; i++)
+            try
+            {
+                for (int i = 0; i < 8; i++)
                 {
                     if (newamount==newAmountArray[i])
                     {
                     amount += newAmountArray[i];
-                    UpdateMoneypool();
                     break;
                     }
-                    else
-                    {
-                        throw new FormatException("Wrong input amount.");
-                    }
-                }        
+                }
+            }
+            catch
+            {
+              throw new FormatException("Wrong input amount.");                          
+            }
         }
 
         public int[] EndSession()
         {
-            int[] moneyArray = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
-            int[] depocitArray = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
-
-            while (amount != 0)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    if (amount >= moneyArray[i])
-                    {
-                        depocitArray[i] = depocitArray[i]+moneyArray[i];
-                        return depocitArray;
-                    }
-                }
-            }
-            throw new Exception("The money array is empty.");
+            return UpdateMoneypool();           
         }
 
         public int[] UpdateMoneypool()
         {
             int[] moneyArray = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
             int[] depocitArray = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+            int amountlokal = amount;
 
-            while (amount != 0)
+            while (amountlokal != 0)
             {
                 for (int i = 0; i < 8; i++)
                 {
-                    if (amount >= moneyArray[i])
+                    if (amountlokal >= moneyArray[i])
                     {
-                        depocitArray[i] = depocitArray[i] + moneyArray[i];
-                        return depocitArray;
+                        depocitArray[i] += moneyArray[i];
+                        amountlokal -= moneyArray[i];
+                        if (amountlokal >= moneyArray[i]) //Kollar om amountlokal behöver köras en gång till på samma nivå
+                        { i--; }
                     }
                 }
+                return depocitArray;
             }
             throw new Exception("The money array is empty.");
         }
 
         public int GetBalance()
         {
-            
-        return UpdateMoneypool().Sum();
+
+            return UpdateMoneypool().Sum();
         }
 
         public string GetDescription(int ProductNumber)

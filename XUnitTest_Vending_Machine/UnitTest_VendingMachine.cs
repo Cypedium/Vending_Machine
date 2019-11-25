@@ -4,6 +4,7 @@ using System.Text;
 using Xunit;
 using Vending_Machine.Model;
 using Vending_Machine.Data;
+using System.Linq;
 
 namespace XUnitTest_Vending_Machine
 {
@@ -16,12 +17,12 @@ namespace XUnitTest_Vending_Machine
             int testamount1 = 1000;
                        
             //Assert
-            Implement_Vending_Machine myVendingMachine = new Implement_Vending_Machine();
-            myVendingMachine.AddCurrency(testamount1);
+            Implement_Vending_Machine myVendingMachine1 = new Implement_Vending_Machine();
+            myVendingMachine1.AddCurrency(testamount1);
            
 
             //Act
-            Assert.Equal(testamount1, myVendingMachine.GetBalance());
+            Assert.Equal(testamount1, myVendingMachine1.GetBalance());
         }
 
         [Fact]
@@ -32,10 +33,10 @@ namespace XUnitTest_Vending_Machine
             string expected_error_msg = "Wrong input amount.";
             string error_msg="";
             //Assert
-            Implement_Vending_Machine myVendingMachine = new Implement_Vending_Machine();
+            Implement_Vending_Machine myVendingMachine2 = new Implement_Vending_Machine();
             try
             {
-                myVendingMachine.AddCurrency(testamount1);
+                myVendingMachine2.AddCurrency(testamount1);
             }
 
             catch (FormatException exception)
@@ -56,34 +57,69 @@ namespace XUnitTest_Vending_Machine
             int testAmount4 = 50;
             int testAmount5 = 20;
             int testAmount6 = 5;
-            int testAmount7 = 2;
-            int sumTestAmount = 1777;
+            int testAmount7 = 1;
+            int sumTestAmount = 1776;
 
             //Assert
-            Implement_Vending_Machine myVendingMachine = new Implement_Vending_Machine();
-            myVendingMachine.AddCurrency(testAmount1);
-            myVendingMachine.AddCurrency(testAmount2);
-            myVendingMachine.AddCurrency(testAmount3);
-            myVendingMachine.AddCurrency(testAmount3);
-            myVendingMachine.AddCurrency(testAmount4);
-            myVendingMachine.AddCurrency(testAmount5);
-            myVendingMachine.AddCurrency(testAmount6);
-            myVendingMachine.AddCurrency(testAmount7);
+            Implement_Vending_Machine myVendingMachine3 = new Implement_Vending_Machine();
+            myVendingMachine3.AddCurrency(testAmount1);
+            myVendingMachine3.AddCurrency(testAmount2);
+            myVendingMachine3.AddCurrency(testAmount3);
+            myVendingMachine3.AddCurrency(testAmount3);
+            myVendingMachine3.AddCurrency(testAmount4);
+            myVendingMachine3.AddCurrency(testAmount5);
+            myVendingMachine3.AddCurrency(testAmount6);
+            myVendingMachine3.AddCurrency(testAmount7);
 
             //Act
-            Assert.Equal(sumTestAmount, myVendingMachine.GetBalance());
+            Assert.Equal(sumTestAmount, myVendingMachine3.GetBalance());
+        }
+        [Fact]
+        public void UpdateMoneyPool()
+        {
+        //Arrange
+        int testAmount1 = 1000;
+        int testAmount2 = 500;
+        int testAmount3 = 100;
+        int testAmount4 = 50;
+        int testAmount5 = 20;
+        int testAmount6 = 5;
+        int testAmount7 = 1;
+        int sumTestAmount = 1776;
+
+        //Assert
+        Implement_Vending_Machine myVendingMachine4 = new Implement_Vending_Machine();
+        myVendingMachine4.AddCurrency(testAmount1);
+            myVendingMachine4.AddCurrency(testAmount2);
+            myVendingMachine4.AddCurrency(testAmount3);
+            myVendingMachine4.AddCurrency(testAmount3);
+            myVendingMachine4.AddCurrency(testAmount4);
+            myVendingMachine4.AddCurrency(testAmount5);
+            myVendingMachine4.AddCurrency(testAmount6);
+            myVendingMachine4.AddCurrency(testAmount7);
+
+            //Act
+            Assert.Equal(sumTestAmount, myVendingMachine4.UpdateMoneypool().Sum());
+            Assert.Equal(sumTestAmount, myVendingMachine4.GetBalance());
         }
 
-        //[Fact]
-        //public int GetBalance_ok()
-        //{
+        [Fact]
+        public void GetDescription_ok()
+        {
+            //Arrange
+            int testId1 = 0;
+            //int testId2 = 2;
+            //int testId3 = 3;
+            string actual_description = "";
+            string expected_description = "Coke, 20, 345, False";
 
-        //}
-        //[Fact]
-        //public string GetDescription_ok(int ProductNumber)
-        //{
+            //Assert
+            Implement_Vending_Machine myVendingMachine5 = new Implement_Vending_Machine();
+            actual_description = myVendingMachine5.GetDescription(testId1);
+            //Act
+            Assert.Equal(expected_description, actual_description);
+        }
 
-        //}
         //[Fact]
         //public string[] GetProducts_ok()
         //{
