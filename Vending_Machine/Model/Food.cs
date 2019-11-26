@@ -9,7 +9,7 @@ namespace Vending_Machine.Model
     {
         protected bool chocholate;
 
-        public  Food () : base ()
+        public  Food(int productNumber) : base(productNumber)
         {
             chocholate = false;
         }

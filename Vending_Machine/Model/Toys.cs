@@ -7,7 +7,7 @@ namespace Vending_Machine.Model
     public class Toys : Product
     {
         protected bool battery;
-       public Toys() : base()
+       public Toys(int productNumber) : base(productNumber)
         {
             battery = false;
         }

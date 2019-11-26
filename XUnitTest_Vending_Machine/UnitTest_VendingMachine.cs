@@ -9,17 +9,17 @@ using System.Linq;
 namespace XUnitTest_Vending_Machine
 {
     public class UnitTest_VendingMachine
-    {
+    {      
         [Fact]
         public void AddCurrency_ok()
         {
             //Arrange
             int testamount1 = 1000;
-                       
+
             //Assert
             Implement_Vending_Machine myVendingMachine1 = new Implement_Vending_Machine();
             myVendingMachine1.AddCurrency(testamount1);
-           
+
 
             //Act
             Assert.Equal(testamount1, myVendingMachine1.GetBalance());
@@ -31,7 +31,7 @@ namespace XUnitTest_Vending_Machine
             //Arrange
             int testamount1 = 1001;
             string expected_error_msg = "Wrong input amount.";
-            string error_msg="";
+            string error_msg = "";
             //Assert
             Implement_Vending_Machine myVendingMachine2 = new Implement_Vending_Machine();
             try
@@ -41,7 +41,7 @@ namespace XUnitTest_Vending_Machine
 
             catch (FormatException exception)
             {
-             error_msg = exception.Message;
+                error_msg = exception.Message;
             }
             //Act
             Assert.Equal(expected_error_msg, error_msg);
@@ -77,19 +77,19 @@ namespace XUnitTest_Vending_Machine
         [Fact]
         public void UpdateMoneyPool()
         {
-        //Arrange
-        int testAmount1 = 1000;
-        int testAmount2 = 500;
-        int testAmount3 = 100;
-        int testAmount4 = 50;
-        int testAmount5 = 20;
-        int testAmount6 = 5;
-        int testAmount7 = 1;
-        int sumTestAmount = 1776;
+            //Arrange
+            int testAmount1 = 1000;
+            int testAmount2 = 500;
+            int testAmount3 = 100;
+            int testAmount4 = 50;
+            int testAmount5 = 20;
+            int testAmount6 = 5;
+            int testAmount7 = 1;
+            int sumTestAmount = 1776;
 
-        //Assert
-        Implement_Vending_Machine myVendingMachine4 = new Implement_Vending_Machine();
-        myVendingMachine4.AddCurrency(testAmount1);
+            //Assert
+            Implement_Vending_Machine myVendingMachine4 = new Implement_Vending_Machine();
+            myVendingMachine4.AddCurrency(testAmount1);
             myVendingMachine4.AddCurrency(testAmount2);
             myVendingMachine4.AddCurrency(testAmount3);
             myVendingMachine4.AddCurrency(testAmount3);
@@ -107,9 +107,7 @@ namespace XUnitTest_Vending_Machine
         public void GetDescription_ok()
         {
             //Arrange
-            int testId1 = 0;
-            //int testId2 = 2;
-            //int testId3 = 3;
+            int testId1 = 1;
             string actual_description = "";
             string expected_description = "Coke, 20, 345, False";
 
@@ -120,15 +118,31 @@ namespace XUnitTest_Vending_Machine
             Assert.Equal(expected_description, actual_description);
         }
 
-        //[Fact]
-        //public string[] GetProducts_ok()
-        //{
+        [Fact]
+        public void GetProducts_ok()
+        {
+            
+            //Arrange           
+            
+            
+            string[] actual_description = new string[6];
 
-        //}
+            //Assert
+            Implement_Vending_Machine myVendingMachine6 = new Implement_Vending_Machine();
+            actual_description = myVendingMachine6.GetProducts();
+            //Act                       
+                Assert.Contains("1 : Coke", actual_description);
+                Assert.Contains("2 : Juice", actual_description);
+                Assert.Contains("3 : Proteinbar", actual_description);
+                Assert.Contains("4 : Sandwich", actual_description);
+                Assert.Contains("5 : Doll", actual_description);
+                Assert.Contains("6 : RC Car", actual_description);
+            
+        }
+
         //[Fact]
         //public Product Request_ok(int ProductNumber)
         //{
-
         //}
 
     }

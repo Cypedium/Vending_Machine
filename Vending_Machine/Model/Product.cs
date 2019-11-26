@@ -13,11 +13,12 @@ namespace Vending_Machine.Model
         protected int cal_int;
         protected int price_int;
         protected int productId;
+        
         //public int ProductId { get; protected set; }
 
-        public Product() //Constructor
+        public Product(int productNumber) //Constructor
         {
-            ProductNumber = 0; 
+            ProductNumber = productNumber;
             ProductName = "No input";
             Price=0;
             Cal=0;

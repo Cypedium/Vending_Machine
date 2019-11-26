@@ -9,12 +9,11 @@ namespace Vending_Machine.Model
 
     public class Implement_Vending_Machine : IVending_Machine
     {
+        protected int amount = 0;
         
-        private int NewAmount { get; set; }
-        private int amount=0;
         //Create all products
 
-        readonly Product[] productArray = new Product[]
+        readonly static Product[] productArray = new Product[]
         {
         new Coke(ProductSequencer.NextProductNumber()),
         new Juice(ProductSequencer.NextProductNumber()),
@@ -23,28 +22,37 @@ namespace Vending_Machine.Model
         new Doll(ProductSequencer.NextProductNumber()),
         new RC_Car(ProductSequencer.NextProductNumber())
         };
-        
+ 
         public void AddCurrency(int newamount)
         {
             
             int[] newAmountArray = new int[] { 1000,500,100,50,20,10,5,1};
+            bool wrongAmount = true;
+            
 
-            try
+            foreach (var item in newAmountArray)            
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    if (newamount==newAmountArray[i])
-                    {
-                    amount += newAmountArray[i];
-                    break;
-                    }
-                }
-            }
-            catch
-            {
-              throw new FormatException("Wrong input amount.");                          
+                if (newamount==newAmountArray[item])
+                amount += newAmountArray[item];
+                wrongAmount = false;
+                break;
+            }  
+
+            if (wrongAmount)
+            { 
+                throw new FormatException("Wrong input amount.");                          
             }
         }
+
+        //for (int i = 0; i < 8; i++)
+        //    {
+        //       if (newamount==newAmountArray[i])
+        //       {
+        //            amount += newAmountArray[i];
+        //            wrongAmount = false;
+        //            break;                        
+        //       }                   
+        //    }
 
         public int[] EndSession()
         {
@@ -80,11 +88,11 @@ namespace Vending_Machine.Model
             return UpdateMoneypool().Sum();
         }
 
-        public string GetDescription(int ProductNumber)
+        public string GetDescription(int productNumber)
         {  
             for (int i = 0; i < productArray.Length; i++)
             {
-                if (ProductNumber == productArray[i].ProductNumber) //i array ligger aCar.ProductNumber
+                if (productNumber == productArray[i].ProductNumber) //i array ligger aCar.ProductNumber
                 {
                     return productArray[i].ShowProductInfo();
                 }      
@@ -99,8 +107,7 @@ namespace Vending_Machine.Model
                 string[] getProductArray = new string[productArray.Length];
                 for (int i = 0; i < productArray.Length; i++)
                 {
-                     getProductArray[i] = 
-                    productArray[i].ProductNumber.ToString() + " : " + productArray[i].ProductName;                    
+                     getProductArray[i] = productArray[i].ProductNumber.ToString() + " : " + productArray[i].ProductName;                    
                 }
                 return getProductArray;
             }

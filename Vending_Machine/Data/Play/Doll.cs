@@ -7,9 +7,8 @@ namespace Vending_Machine.Data
 {
     public class Doll : Toys
     {
-        public Doll(int ProductNumberD) : base()
-        {
-            base.ProductNumber = ProductSequencer.NextProductNumber();
+        public Doll(int productNumber) : base(productNumber)
+        {          
             base.battery = false;
             base.ProductName = "Doll";
             base.Price = 449;

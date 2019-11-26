@@ -32,7 +32,7 @@ namespace XUnitTest_Vending_Machine
             //Arrange
             string testcoke = "Coke, 20, 345, False";
             string testproteinbar = "Proteinbar, 45, 299, True";
-            string testRC_Car = "Best Remote Control Car Ever, 999, 0, True";
+            string testRC_Car = "RC Car, 999, 0, True";
             //Assert
 
             Coke aCoke = new Coke(ProductSequencer.NextProductNumber());
