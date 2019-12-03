@@ -13,14 +13,14 @@ namespace Vending_Machine.Model
         
         //Create all products
 
-        readonly static Product[] productArray = new Product[]
+        public static Product[] productArray = new Product[]
         {
-        new Coke(ProductSequencer.NextProductNumber()),
-        new Juice(ProductSequencer.NextProductNumber()),
-        new Proteinbar(ProductSequencer.NextProductNumber()),
-        new Sandwich(ProductSequencer.NextProductNumber()),
-        new Doll(ProductSequencer.NextProductNumber()),
-        new RC_Car(ProductSequencer.NextProductNumber())
+        new Coke(1),
+        //new Juice(ProductSequencer.NextProductNumber()),
+        //new Proteinbar(ProductSequencer.NextProductNumber()),
+        //new Sandwich(ProductSequencer.NextProductNumber()),
+        //new Doll(ProductSequencer.NextProductNumber()),
+        //new RC_Car(ProductSequencer.NextProductNumber())
         };
  
         public void AddCurrency(int newamount)

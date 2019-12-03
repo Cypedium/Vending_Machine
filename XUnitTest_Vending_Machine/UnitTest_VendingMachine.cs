@@ -140,10 +140,22 @@ namespace XUnitTest_Vending_Machine
             
         }
 
-        //[Fact]
-        //public Product Request_ok(int ProductNumber)
-        //{
-        //}
+        [Fact]
+        public void Request_ok()
+        {
+            //Asigne
+           
+            Implement_Vending_Machine myVendingMachine6 = new Implement_Vending_Machine();
+
+            Product requested_product = new Coke(1);
+
+            //Assert
+            Product actual_product = myVendingMachine6.Request(1);
+
+
+            //Act
+            Assert.Equal(requested_product, actual_product);
+        }
 
     }
 }
