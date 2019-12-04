@@ -147,10 +147,10 @@ namespace XUnitTest_Vending_Machine
            
             Implement_Vending_Machine myVendingMachine6 = new Implement_Vending_Machine();
 
-            Product requested_product = new Coke(1);
+            Product requested_product = new Coke(int.MaxValue);
 
             //Assert
-            Product actual_product = myVendingMachine6.Request(1);
+            Product actual_product = myVendingMachine6.Request(int.MaxValue);
 
 
             //Act

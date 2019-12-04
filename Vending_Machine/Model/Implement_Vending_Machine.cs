@@ -10,49 +10,53 @@ namespace Vending_Machine.Model
     public class Implement_Vending_Machine : IVending_Machine
     {
         protected int amount = 0;
+
+        public Implement_Vending_Machine()
+        {
+
+        }
+
+        public Implement_Vending_Machine(Product[] products)
+        {
+            productArray = products;
+        }
         
         //Create all products
 
         public static Product[] productArray = new Product[]
         {
-        new Coke(1),
-        //new Juice(ProductSequencer.NextProductNumber()),
-        //new Proteinbar(ProductSequencer.NextProductNumber()),
-        //new Sandwich(ProductSequencer.NextProductNumber()),
-        //new Doll(ProductSequencer.NextProductNumber()),
-        //new RC_Car(ProductSequencer.NextProductNumber())
+        new Coke(ProductSequencer.NextProductNumber()),
+        new Juice(ProductSequencer.NextProductNumber()),
+        new Proteinbar(ProductSequencer.NextProductNumber()),
+        new Sandwich(ProductSequencer.NextProductNumber()),
+        new Doll(ProductSequencer.NextProductNumber()),
+        new RC_Car(ProductSequencer.NextProductNumber())
         };
- 
+
         public void AddCurrency(int newamount)
         {
-            
-            int[] newAmountArray = new int[] { 1000,500,100,50,20,10,5,1};
+
+            int[] newAmountArray = new int[] { 1000, 500, 100, 50, 20, 10, 5, 1 };
             bool wrongAmount = true;
-            
 
-            foreach (var item in newAmountArray)            
+
+            for (int i = 0; i < 8; i++)
             {
-                if (newamount==newAmountArray[item])
-                amount += newAmountArray[item];
-                wrongAmount = false;
-                break;
-            }  
+                if (newamount == newAmountArray[i])
+                {
+                    amount += newAmountArray[i];
+                    wrongAmount = false;
+                    break;
+                }
 
-            if (wrongAmount)
-            { 
-                throw new FormatException("Wrong input amount.");                          
+                if (wrongAmount)
+                {
+                    throw new FormatException("Wrong input amount.");
+                }
             }
         }
-
-        //for (int i = 0; i < 8; i++)
-        //    {
-        //       if (newamount==newAmountArray[i])
-        //       {
-        //            amount += newAmountArray[i];
-        //            wrongAmount = false;
-        //            break;                        
-        //       }                   
-        //    }
+          
+      
 
         public int[] EndSession()
         {
